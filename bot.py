@@ -5,7 +5,7 @@ from telebot import types
 import sqlite3
 
 DATABASE = 'database.db'
-API_TOKEN = '7120335925:AAGZEpwn6ZWGTzgzEKt8jPDHmeU6byvjKAk'
+API_TOKEN = 'YOUR BOT TOKEN'
 game = False
 bot = telebot.TeleBot(API_TOKEN)
 moves = ['камень', 'ножницы', 'бумага']
@@ -85,8 +85,8 @@ def echo_message(message):
                 coins -= 10
                 c.execute("INSERT OR REPLACE INTO users (user_id, coins) VALUES (?, ?)", (user_id, coins))
                 bot.reply_to(message, "Подождите...")
-                api = Text2ImageAPI('https://api-key.fusionbrain.ai/', '30B838F15F70E33436BB6DBFAD481B84',
-                                    '68F1E7A1BE9313D6C4A9F33FC49FDE8B')
+                api = Text2ImageAPI('https://api-key.fusionbrain.ai/', 'API KEY',
+                                    'SECRET KEY')
                 model_id = api.get_model()
                 uuid = api.generate("Красивая картинка на рабочий стол", model_id)
                 images = api.check_generation(uuid)[0]
